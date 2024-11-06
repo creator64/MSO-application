@@ -16,8 +16,7 @@ var lines = File.ReadAllLines(Path.Combine(baseDir, "tests/source/medium.txt")).
 
 foreach (string line in lines)
 {
-    Console.WriteLine(line[0] == '\t');
-    Console.WriteLine();
+    Console.WriteLine(line[0] == ' ');
 }
 
 Console.WriteLine("Hello, World!");
