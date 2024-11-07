@@ -14,9 +14,11 @@ string baseDir = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent
 
 var lines = File.ReadAllLines(Path.Combine(baseDir, "tests/source/medium.txt")).ToList();
 
-foreach (string line in lines)
-{
-    Console.WriteLine(line[0] == ' ');
-}
+// foreach (string line in lines)
+// {
+//     Console.WriteLine(line[0] == ' ');
+// }
 
-Console.WriteLine("Hello, World!");
+Console.WriteLine(int.TryParse("20.5", out _));
+
+
