@@ -1,3 +1,4 @@
+using core.Commands;
 using core.Errors;
 using core.Factories;
 
@@ -67,7 +68,32 @@ public class ProgramIntermediate
     
     public ApplicationProgram BuildProgram()
     {
-        return null;
+        return new ApplicationProgram(getCommandListRecursive(this.commandStrings, 0));
+    }
+
+    private List<Command> getCommandListRecursive(List<String> commandStrings, int targetNestingLevel)
+    {
+        List<Command> commands = new List<Command>();
+        for (int i = 0; i < commandStrings.Count; i++)
+        {
+            var commandString = commandStrings[i];
+            if (commandString.Trim() == "") continue;
+            var parts = commandString.Trim().Split(" ");
+            var args = parts.ToList().Slice(1, parts.Length - 1);
+            CommandFactory f = getFactory(parts[0]);
+            int nestingLevel = getNestingLevel(commandString);
+
+            if (f.isCommandContainer)
+            {
+                var containerCommands = getCommandListRecursive(
+                    commandStrings.Slice(i + 1, commandStrings.Count - i - 1), targetNestingLevel + 1);
+                commands.Add(f.buildCommand(args, containerCommands));
+            }
+            else if (nestingLevel < targetNestingLevel) break;
+            else if (nestingLevel == targetNestingLevel) commands.Add(f.buildCommand(args, null));
+        }
+
+        return commands;
     }
 
     public static int getNestingLevel(string line)

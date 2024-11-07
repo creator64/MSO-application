@@ -68,8 +68,9 @@ public class ProgramIntermediateTest
     [Fact]
     public void buildTest()
     {
-        Assert.Equivalent(ProgramIntermediates.simple.BuildProgram(), Programs.simpleProgram);
-        Assert.Equivalent(ProgramIntermediates.medium.BuildProgram(), Programs.mediumProgram);
+        Assert.Equivalent(Programs.simpleProgram, ProgramIntermediates.simple.BuildProgram());
+        Assert.Equivalent(Programs.mediumProgram, ProgramIntermediates.medium.BuildProgram());
+        Assert.Equivalent(Programs.advancedProgram, ProgramIntermediates.advanced.BuildProgram());
     }
 
     [Theory]

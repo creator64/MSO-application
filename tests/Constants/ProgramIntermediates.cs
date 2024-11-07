@@ -26,6 +26,22 @@ public static class ProgramIntermediates
         "Turn left",
         "Move 3"
     });
+
+    public static readonly ProgramIntermediate advanced = new(new()
+    {
+        "Move 5",
+        "Turn left",
+        "Turn left",
+        "Move 3",
+        "  ",
+        "Turn right",
+        "Repeat 3",
+        "    Move 1",
+        "    Turn right",
+        "    Repeat 5",
+        "        Move 2",
+        "Turn left"
+    });
     
     public static readonly ProgramIntermediate invalidTabAfterContainer = new (new ()
     {
