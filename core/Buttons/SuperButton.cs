@@ -19,7 +19,7 @@ namespace core.Buttons
             tlocation = location;
         }
 
-        public void Draw()
+        protected void Draw()
         {
             //code to draw a button on screen
         }
