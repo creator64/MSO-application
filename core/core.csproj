@@ -8,8 +8,4 @@
         <RootNamespace>core</RootNamespace>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="Errors\" />
-    </ItemGroup>
-
 </Project>
