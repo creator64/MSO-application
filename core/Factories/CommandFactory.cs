@@ -8,7 +8,7 @@ public abstract class CommandFactory
 {
     public virtual bool isEmpty() => false;
     protected List<ArgumentTypeChecker>? argumentTypeCheckers { get; init; }
-    protected bool isCommandContainer { get; init; }
+    public bool isCommandContainer { get; init; }
 
     public List<ArgumentError> canBuild(List<string> arguments)
     {

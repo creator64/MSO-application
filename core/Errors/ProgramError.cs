@@ -4,7 +4,7 @@ public abstract class ProgramError
 {
     private readonly string errorName;
     private readonly string description;
-    public readonly int? line;
+    public int? line;
 
     protected ProgramError(string description, string errorName)
     {

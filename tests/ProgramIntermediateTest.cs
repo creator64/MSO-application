@@ -60,8 +60,8 @@ public class ProgramIntermediateTest
             ));
 
         var errors = mapToTypes(ProgramIntermediates.unknownCommand.validate())
-            .Concat(mapToTypes(ProgramIntermediates.invalidTab.validate()));
-        var expectedErrors = new List<Type>() { typeof(IllegalIndentation), typeof(CommandNotFound) };
+            .Concat(mapToTypes(ProgramIntermediates.invalidTab.validate())).ToList();
+        var expectedErrors = new List<Type>() { typeof(CommandNotFound), typeof(IllegalIndentation) };
         Assert.Equivalent(expectedErrors, errors);
     }
 
@@ -70,6 +70,18 @@ public class ProgramIntermediateTest
     {
         Assert.Equivalent(ProgramIntermediates.simple.BuildProgram(), Programs.simpleProgram);
         Assert.Equivalent(ProgramIntermediates.medium.BuildProgram(), Programs.mediumProgram);
+    }
+
+    [Theory]
+    [InlineData("    Nest1", 1)]
+    [InlineData("Nest0", 0)]
+    [InlineData("        Nest2", 2)]
+    [InlineData("        Nest2 with other objects", 2)]
+    [InlineData("       NestInvalid", -1)]
+    [InlineData("      NestInvalid2", -1)]
+    public void testNestingLevel(string line, int level)
+    {
+        Assert.Equal(ProgramIntermediate.getNestingLevel(line), level);
     }
 }
 
