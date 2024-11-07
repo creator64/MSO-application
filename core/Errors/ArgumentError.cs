@@ -11,9 +11,16 @@ public abstract class ArgumentError : ProgramError
 
 public class ArgumentSizeMismatch : ArgumentError
 {
-    public ArgumentSizeMismatch(string description) : base(description, "WRONG ARGUMENT SIZE")
+    private int expectedSize, actualSize;
+    public ArgumentSizeMismatch(int expectedSize, int actualSize) : base(createDescription(expectedSize, actualSize), "WRONG ARGUMENT SIZE")
     {
-        
+        this.expectedSize = expectedSize;
+        this.actualSize = actualSize;
+    }
+
+    private static string createDescription(int expectedSize, int actualSize)
+    {
+        return $"Expected {expectedSize} arguments, but received {actualSize}";
     }
 }
 

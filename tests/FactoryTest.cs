@@ -21,7 +21,7 @@ public class FactoryTest
             new (new TurnFactory(), new [] {"left"}, new Turn(TurnDirection.LEFT)),
             new (new TeleportFactory(), new [] {"10", "20"}, new Teleport(10, 20))
         };
-        Assert.All(data, tuple => Assert.Equivalent(tuple.Item3, tuple.Item1.buildCommand(tuple.Item2.ToList())));
+        Assert.All(data, tuple => Assert.Equivalent(tuple.Item3, tuple.Item1.buildCommand(tuple.Item2.ToList(), null)));
         
     }
     
@@ -36,14 +36,14 @@ public class FactoryTest
             new (new RepeatUntilFactory(), new [] {"GridEdge"}, new RepeatUntil(RepeatUntilCondition.GridEdge, commandList)),
         };
         
-        Assert.All(data, tuple => Assert.Equivalent(tuple.Item3, tuple.Item1.buildCommand(tuple.Item2.ToList())));
+        Assert.All(data, tuple => Assert.Equivalent(tuple.Item3, tuple.Item1.buildCommand(tuple.Item2.ToList(), commandList)));
     }
 
     [Theory]
     [InlineData(new string[] { "10", "20", "30" }, new Type[] {typeof(ArgumentSizeMismatch)})]
     [InlineData(new string[] {}, new Type[] {typeof(ArgumentSizeMismatch)})]
     [InlineData(new string[] { "10.0" }, new Type[] {})]
-    [InlineData(new string[] { "10.0", "20" }, new Type[] {typeof(ArgumentTypeMismatch), typeof(ArgumentSizeMismatch)})]
+    [InlineData(new string[] { "10.0", "20" }, new Type[] {typeof(ArgumentSizeMismatch), typeof(ArgumentTypeMismatch)})]
     public void repeatFactoryTest(string[] args, Type[] expectedErrors)
     {
         testFactoryCanBuild(new RepeatFactory(), args, expectedErrors);
@@ -53,7 +53,7 @@ public class FactoryTest
     [InlineData(new string[] { "10", "20", "30" }, new Type[] {typeof(ArgumentSizeMismatch)})]
     [InlineData(new string[] {}, new Type[] {typeof(ArgumentSizeMismatch)})]
     [InlineData(new string[] { "10.0" }, new Type[] {})]
-    [InlineData(new string[] { "10.0", "20" }, new Type[] {typeof(ArgumentTypeMismatch), typeof(ArgumentSizeMismatch)})]
+    [InlineData(new string[] { "10.0", "20" }, new Type[] {typeof(ArgumentSizeMismatch), typeof(ArgumentTypeMismatch)})]
     public void moveFactoryTest(string[] args, Type[] expectedErrors)
     {
         testFactoryCanBuild(new MoveFactory(), args, expectedErrors);
@@ -82,8 +82,8 @@ public class FactoryTest
     
     [Theory]
     [InlineData(new string[] { "20", "40" }, new Type[] {})]
-    [InlineData(new string[] { "text" }, new Type[] {typeof(ArgumentTypeMismatch)})]
-    [InlineData(new string[] {"left", "right"}, new Type[] {typeof(ArgumentSizeMismatch), typeof(ArgumentTypeMismatch)})]
+    [InlineData(new string[] { "text" }, new Type[] {typeof(ArgumentSizeMismatch), typeof(ArgumentTypeMismatch)})]
+    [InlineData(new string[] {"left", "right"}, new Type[] {typeof(ArgumentTypeMismatch), typeof(ArgumentTypeMismatch)})]
     [InlineData(new string[] {"20"}, new Type[] {typeof(ArgumentSizeMismatch)})]
     public void teleportFactoryTest(string[] args, Type[] expectedErrors)
     {
@@ -94,6 +94,6 @@ public class FactoryTest
     {
         var mapToTypes = ErrorUtils.mapToTypes;
         var errors = f.canBuild(args.ToList()).ConvertAll(e => (ProgramError)e);
-        Assert.All(expectedErrors, expectedError => Assert.IsType(expectedError, mapToTypes(errors)));
+        Assert.Equivalent(expectedErrors, mapToTypes(errors));
     }
 }
