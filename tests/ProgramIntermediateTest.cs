@@ -24,6 +24,8 @@ public class ProgramIntermediateTest
     [Fact]
     public void validationTest()
     {
+        var mapToTypes = ErrorUtils.mapToTypes;
+        
         Assert.Empty(ProgramIntermediates.simple.validate());
         Assert.Empty(ProgramIntermediates.medium.validate());
         
@@ -60,12 +62,7 @@ public class ProgramIntermediateTest
         var errors = mapToTypes(ProgramIntermediates.unknownCommand.validate())
             .Concat(mapToTypes(ProgramIntermediates.invalidTab.validate()));
         var expectedErrors = new List<Type>() { typeof(IllegalIndentation), typeof(CommandNotFound) };
-        Assert.All(expectedErrors, expected => Assert.Contains(expected, errors));
-    }
-
-    private List<Type> mapToTypes(List<ProgramError> errors)
-    {
-        return errors.Select(e => e.GetType()).ToList();
+        Assert.Equivalent(expectedErrors, errors);
     }
 
     [Fact]
@@ -73,5 +70,13 @@ public class ProgramIntermediateTest
     {
         Assert.Equivalent(ProgramIntermediates.simple.BuildProgram(), Programs.simpleProgram);
         Assert.Equivalent(ProgramIntermediates.medium.BuildProgram(), Programs.mediumProgram);
+    }
+}
+
+public static class ErrorUtils
+{
+    public static List<Type> mapToTypes(List<ProgramError> errors)
+    {
+        return errors.Select(e => e.GetType()).ToList();
     }
 }
