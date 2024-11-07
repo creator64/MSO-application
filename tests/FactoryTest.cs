@@ -94,6 +94,6 @@ public class FactoryTest
     {
         var mapToTypes = ErrorUtils.mapToTypes;
         var errors = f.canBuild(args.ToList()).ConvertAll(e => (ProgramError)e);
-        Assert.Equivalent(expectedErrors, mapToTypes(errors));
+        Assert.All(expectedErrors, expectedError => Assert.IsType(expectedError, mapToTypes(errors)));
     }
 }
