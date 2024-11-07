@@ -1,0 +1,75 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace core.PracticeExercises
+{
+    public class Exercise
+    {
+        //this class needs to be able to create a grid on its own, with a certain length and width (finite)
+        //it also needs to place the character on a starting spot
+
+        //public Grid Grid { get; } we need some grid
+
+        //public Character Character { get; } we need to know about the character to check if it has reached the finish line for example
+
+        public Exercise(/*Grid grid*/)
+        {
+            //Grid = grid;
+            //Character = new Character();
+        }
+
+        //maybe the following code needs to be merged with code for running any other user-made-program 
+
+        public void RunExercise(List<Action> program)
+        {
+            try
+            {
+                foreach (var action in program)
+                {
+                    //Execute(action); to be implented in run?
+                    CheckPosition();
+                }
+                CheckSuccess();
+            }
+            catch (OutOfBoundsException)
+            {
+                throw;
+            }
+            catch (BlockedCellException)
+            {
+                throw;
+            }
+        }
+
+        private void CheckPosition()
+        {
+            //check if the character walks outside the grid
+            if (/*condition*/false)
+            {
+                throw new OutOfBoundsException();
+            }
+
+            //check if the character walks to a blocked cell
+            if (/*condition*/false)
+            {
+                throw new BlockedCellException();
+            }
+        }
+
+        private void CheckSuccess()
+        {
+            //check if the character has reached the finish line, this method is only called after all the users moves have been applied
+            if (/*condition*/false)
+            {
+                Console.WriteLine("You reached the finish");
+            }
+            else
+            {
+                Console.WriteLine("You didn't reach the finish");
+            }
+        }
+    }
+}
