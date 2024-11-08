@@ -24,7 +24,7 @@ public class ApplicationProgram
         exercise = new Exercise(grid1);
     }
 
-    public void execute(IMoveable moveable)
+    public void execute(Moveable moveable)
     {
         foreach (Command command in commands)
         {

@@ -44,9 +44,20 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
+
     private void Button_Click(object sender, RoutedEventArgs e)
     {
         metricsButton.Press();
         MetricsOutput.Text = "" + showMetricsCommand.tmetrics;
+
+    public void lol()
+    {
+        
+    }
+
+    private void handleRun(object sender, RoutedEventArgs e)
+    {
+        square.Margin = new (square.Margin.Left, square.Margin.Top, square.Margin.Right - 31.3, square.Margin.Bottom);
+
     }
 }
