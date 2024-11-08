@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:application"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="400" Width="765">
 
+
+    <Grid Margin="5">
+        <TextBox Height="300" Width="400" HorizontalAlignment="Left" VerticalAlignment="Top" IsTabStop="True">
+            
+        </TextBox>
+        <Button x:Name="runButton"
+                ClickMode="Hover" Content="Run"
+                Width="50" Height="20"
+                Background="#92BDED" Foreground="White"
+                Click="handleRun"
+                HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        
+        <Image Width = "200" Source = "Images\grid.jpg" 
+               VerticalAlignment = "Top" HorizontalAlignment="Right"/> 
+        
+        <Image Width = "33" Source = "Images\square.jpg" 
+               VerticalAlignment = "Top" Margin = "30 4.5 162 6" HorizontalAlignment="Right"
+               x:Name="square"
+               /> 
     </Grid>
 </Window>

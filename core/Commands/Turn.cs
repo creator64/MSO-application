@@ -18,7 +18,7 @@ public class Turn : CommandLeaf
         return (Direction)newD;
     }
 
-    public override void Execute(IMoveable obj)
+    public override void Execute(Moveable obj)
     {
         Direction newDirection = getNewDirection(obj.getDirection());
         obj.setDirection(newDirection);

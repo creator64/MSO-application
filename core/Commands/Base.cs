@@ -4,7 +4,7 @@ namespace core.Commands;
 
 public interface Command
 {
-    public void Execute(IMoveable obj);
+    public void Execute(Moveable obj);
     public int commandCount();
     public int maxNestingLevel();
     public int amountOfRepeats();
@@ -19,7 +19,7 @@ public abstract class CommandContainer : Command
         this.children = children;
     }
     
-    public abstract void Execute(IMoveable obj);
+    public abstract void Execute(Moveable obj);
     public int commandCount()
     {
         return 1 + children.Sum(c => c.commandCount());
@@ -38,7 +38,7 @@ public abstract class CommandContainer : Command
 
 public abstract class CommandLeaf : Command
 {
-    public abstract void Execute(IMoveable obj);
+    public abstract void Execute(Moveable obj);
     
     public int commandCount() { return 1; }
     public int maxNestingLevel() { return 0; }

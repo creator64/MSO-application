@@ -16,7 +16,7 @@ public class Repeat : CommandContainer
         return base.amountOfRepeats() + 1;
     }
 
-    public override void Execute(IMoveable obj)
+    public override void Execute(Moveable obj)
     {
         for (int i = 0; i < amount; i++) 
             foreach (Command command in children) command.Execute(obj);

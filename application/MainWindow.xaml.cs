@@ -20,4 +20,14 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
+
+    public void lol()
+    {
+        
+    }
+
+    private void handleRun(object sender, RoutedEventArgs e)
+    {
+        square.Margin = new (square.Margin.Left, square.Margin.Top, square.Margin.Right - 31.3, square.Margin.Bottom);
+    }
 }

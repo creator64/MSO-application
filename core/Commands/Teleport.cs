@@ -12,7 +12,7 @@ public class Teleport : CommandLeaf
         this.x = x;
         this.y = y;
     }
-    public override void Execute(IMoveable obj)
+    public override void Execute(Moveable obj)
     {
         obj.setPosition(new Position(x, y));
     }
