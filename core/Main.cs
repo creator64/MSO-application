@@ -2,6 +2,7 @@
 
 
 using core;
+using core.ApplicationProgram;
 using core.Movement;
 
 // IMoveable obj = new MoveableObject(new Position(0, 0), Direction.EAST);
@@ -14,9 +15,30 @@ string baseDir = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent
 
 var lines = File.ReadAllLines(Path.Combine(baseDir, "tests/source/medium.txt")).ToList();
 
-foreach (string line in lines)
-{
-    Console.WriteLine(line[0] == ' ');
-}
+// foreach (string line in lines)
+// {
+//     Console.WriteLine(line[0] == ' ');
+// }
 
-Console.WriteLine("Hello, World!");
+
+// ProgramIntermediate advanced = new(new()
+// {
+//     "Move 5",
+//     "Turn left",
+//     "Turn left",
+//     "Move 3",
+//     "  ",
+//     "Turn right",
+//     "Repeat 3",
+//     "    Move 1",
+//     "    Turn right",
+//     "    Repeat 5",
+//     "        Move 2",
+//     "Turn left"
+// });
+//
+// advanced.BuildProgram().execute(new MoveableObject(new Position(0, 0), Direction.EAST));
+
+// Console.WriteLine(int.TryParse("20.5", out _));
+
+

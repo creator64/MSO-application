@@ -4,5 +4,5 @@ namespace core.Parsing;
 
 public interface ArgumentTypeChecker
 {
-    public ArgumentTypeMismatch canBuild(string argument);
+    public ArgumentTypeMismatch? canBuild(string argument);
 }
