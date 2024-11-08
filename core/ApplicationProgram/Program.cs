@@ -15,8 +15,13 @@ public class ApplicationProgram
     {
         this.commands = commands;
 
-        exercise = new Exercise();
         isExercise = false;
+
+        Grid.Grid grid1 = new Grid.Grid("Level1.txt");
+        Grid.Grid grid2 = new Grid.Grid("Level2.txt");
+        Grid.Grid grid3 = new Grid.Grid("Level3.txt");
+
+        exercise = new Exercise(grid1);
     }
 
     public void execute(IMoveable moveable)

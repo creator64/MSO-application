@@ -12,13 +12,13 @@ namespace core.PracticeExercises
         //this class needs to be able to create a grid on its own, with a certain length and width (finite)
         //it also needs to place the character on a starting spot
 
-        //public Grid Grid { get; } we need some grid
+        Grid.Grid tgrid;
 
         //public Character Character { get; } we need to know about the character to check if it has reached the finish line for example
 
-        public Exercise(/*Grid grid*/)
+        public Exercise(Grid.Grid grid)
         {
-            //Grid = grid;
+            tgrid = grid;
             //Character = new Character();
         }
 
