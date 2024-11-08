@@ -8,14 +8,15 @@
 
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Metrics" Click="Button_Click"/>
+        <Button Content="Metrics" 
+            HorizontalAlignment="Right" 
+            VerticalAlignment="Top" 
+            Margin="0,315,357,0" 
+            Click="Button_Click"/>
         <TextBlock Name="MetricsOutput" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="468,0,0,47"/>
 
-        Title="MainWindow" Height="400" Width="765">
 
-
-
-    <Grid Margin="5">
+        <Grid Margin="5">
         <TextBox Height="300" Width="400" HorizontalAlignment="Left" VerticalAlignment="Top" IsTabStop="True">
             
         </TextBox>
@@ -33,5 +34,6 @@
                VerticalAlignment = "Top" Margin = "30 4.5 162 6" HorizontalAlignment="Right"
                x:Name="square"
                /> 
+    </Grid>
     </Grid>
 </Window>

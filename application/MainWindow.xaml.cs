@@ -49,10 +49,6 @@ public partial class MainWindow : Window
     {
         metricsButton.Press();
         MetricsOutput.Text = "" + showMetricsCommand.tmetrics;
-
-    public void lol()
-    {
-        
     }
 
     private void handleRun(object sender, RoutedEventArgs e)
