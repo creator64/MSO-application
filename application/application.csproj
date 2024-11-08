@@ -12,6 +12,8 @@
       <ProjectReference Include="..\core\core.csproj" />
     </ItemGroup>
 
+
+
     <ItemGroup>
       <None Remove="images\grid.jpg" />
       <OriginalXamlResource Include="images\grid.jpg">
@@ -22,5 +24,6 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
     </ItemGroup>
+
 
 </Project>

@@ -1,4 +1,7 @@
-﻿using System.Text;
+﻿using core.ApplicationProgram;
+using core.Buttons;
+using core.Grid;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -9,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace application;
 
 /// <summary>
@@ -16,10 +20,35 @@ namespace application;
 /// </summary>
 public partial class MainWindow : Window
 {
+    SuperButton metricsButton;
+    MetricsCommand showMetricsCommand;
+
     public MainWindow()
     {
+        //initialisation of loadexercise and metrics
+        LoadExerciseCommand loadCommand = new LoadExerciseCommand();
+        SuperButton loadButton = new SuperButton(loadCommand);
+
+        TextDisplay textDisplay = new TextDisplay();
+
+        showMetricsCommand = new MetricsCommand(textDisplay);
+        metricsButton = new SuperButton(showMetricsCommand);
+
+
+        //Mocks for testing
+        loadButton.Press();
+
+        showMetricsCommand.UpdateMetrics(1, 2, 3);
+
+
         InitializeComponent();
     }
+
+
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+        metricsButton.Press();
+        MetricsOutput.Text = "" + showMetricsCommand.tmetrics;
 
     public void lol()
     {
@@ -29,5 +58,6 @@ public partial class MainWindow : Window
     private void handleRun(object sender, RoutedEventArgs e)
     {
         square.Margin = new (square.Margin.Left, square.Margin.Top, square.Margin.Right - 31.3, square.Margin.Bottom);
+
     }
 }
