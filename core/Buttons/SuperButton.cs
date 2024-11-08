@@ -8,15 +8,10 @@ namespace core.Buttons
 {
     public class SuperButton
     {
-        //this class represents the loadExercise button, when clicked, the command should be triggered
-
         private readonly ICommand tcommand;
-        private (int, int) tlocation;
-
-        public SuperButton(ICommand command, (int, int) location)
+        public SuperButton(ICommand command)
         {
             tcommand = command;
-            tlocation = location;
         }
 
         protected void Draw()

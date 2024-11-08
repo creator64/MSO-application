@@ -11,6 +11,10 @@ namespace core.Buttons
     {
         public void ShowMetrics(Metrics metrics)
         {
+            string stringMetrics = metrics.commandCount.ToString();
+            string stringAmountOfRepeats = metrics.amountOfRepeats.ToString();
+            string stringMaxNestingLevel = metrics.maxNestingLevel.ToString();
+
             Console.WriteLine("commandCount: " + metrics.commandCount);
             Console.WriteLine("amountOfRepeats: " + metrics.amountOfRepeats);
             Console.WriteLine("maxNestingLevel: " + metrics.maxNestingLevel);

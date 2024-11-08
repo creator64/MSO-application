@@ -9,7 +9,7 @@ namespace core.Buttons
 {
     public class MetricsCommand : ICommand
     {
-        private Metrics tmetrics;
+        public Metrics tmetrics;
         private IDisplay tdisplay;
 
         public MetricsCommand(IDisplay display)
