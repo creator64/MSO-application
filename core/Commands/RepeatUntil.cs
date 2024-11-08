@@ -11,7 +11,7 @@ public class RepeatUntil : CommandContainer
         this.condition = c;
     }
 
-    public override void Execute(IMoveable obj)
+    public override void Execute(Moveable obj)
     {
         
     }

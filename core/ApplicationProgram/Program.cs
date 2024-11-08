@@ -12,7 +12,7 @@ public class ApplicationProgram
         this.commands = commands;
     }
 
-    public void execute(IMoveable moveable)
+    public void execute(Moveable moveable)
     {
         foreach (Command command in commands)
         {

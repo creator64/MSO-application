@@ -8,4 +8,19 @@
         <UseWPF>true</UseWPF>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\core\core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="images\grid.jpg" />
+      <OriginalXamlResource Include="images\grid.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </OriginalXamlResource>
+      <None Remove="images\square.jpg" />
+      <Resource Include="images\square.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+    </ItemGroup>
+
 </Project>

@@ -23,7 +23,7 @@ public class Move : CommandLeaf
         return (stepX, stepY);
     }
 
-    public override void Execute(IMoveable obj)
+    public override void Execute(Moveable obj)
     {
         (int xSteps, int ySteps) = this.getSteps(obj.getDirection());
         obj.setPosition(obj.getPosition().move(xSteps, ySteps));
