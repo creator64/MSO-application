@@ -1,4 +1,5 @@
-﻿using System;
+﻿using core.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,30 +22,7 @@ namespace core.PracticeExercises
             //Character = new Character();
         }
 
-        //maybe the following code needs to be merged with code for running any other user-made-program 
-
-        public void RunExercise(List<Action> program)
-        {
-            try
-            {
-                foreach (var action in program)
-                {
-                    //Execute(action); to be implented in run?
-                    CheckPosition();
-                }
-                CheckSuccess();
-            }
-            catch (OutOfBoundsException)
-            {
-                throw;
-            }
-            catch (BlockedCellException)
-            {
-                throw;
-            }
-        }
-
-        private void CheckPosition()
+        public void CheckPosition()
         {
             //check if the character walks outside the grid
             if (/*condition*/false)
@@ -59,7 +37,7 @@ namespace core.PracticeExercises
             }
         }
 
-        private void CheckSuccess()
+        public void CheckSuccess()
         {
             //check if the character has reached the finish line, this method is only called after all the users moves have been applied
             if (/*condition*/false)

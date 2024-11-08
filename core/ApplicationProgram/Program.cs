@@ -1,15 +1,22 @@
 ﻿using core.Movement;
 using core.Commands;
+using core.PracticeExercises;
 
 namespace core.ApplicationProgram;
 
 public class ApplicationProgram
 {
     private readonly List<Command> commands;
-    
+
+    private PracticeExercises.Exercise exercise;
+    public static bool isExercise;
+
     public ApplicationProgram(List<Command> commands)
     {
         this.commands = commands;
+
+        exercise = new Exercise();
+        isExercise = false;
     }
 
     public void execute(IMoveable moveable)
@@ -17,7 +24,24 @@ public class ApplicationProgram
         foreach (Command command in commands)
         {
             command.Execute(moveable);
+
+
+            if (!isExercise) continue; //if we are running an exercise the execute method should do some extra checking regarding the exercise
+
+            try
+            {
+                exercise.CheckPosition();
+            }
+            catch (OutOfBoundsException)
+            {
+                throw;
+            }
+            catch (BlockedCellException)
+            {
+                throw;
+            }
         }
+        if (isExercise) exercise.CheckSuccess();
     }
 
     public Metrics calculateMetrics()
